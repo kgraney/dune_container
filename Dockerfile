@@ -1,11 +1,14 @@
 #FROM ocaml/opam:alpine-ocaml-5.3
-FROM ubuntu:latest
+#FROM ubuntu:latest
+FROM alpine
 
 #USER opam
 #WORKDIR /home/opam
 
-RUN apt update
-RUN apt install -y opam
+#RUN apt update
+#RUN apt install -y opam
+RUN apk add build-base
+RUN apk add opam
 RUN opam init --disable-sandboxing --bare -y
 
 RUN opam switch create default 5.3.0
