@@ -1,11 +1,10 @@
 FROM ocaml/opam:alpine-ocaml-5.3
 
+USER opam
 WORKDIR /home/opam
 
-RUN opam init --disable-sandboxing --auto-setup -y --compiler=5.3.0 \
-    && opam switch create github 5.3.0
+RUN opam init --disable-sandboxing --bare -y
 
-RUN opam switch github \
-    && opam install dune --yes
+RUN opam install dune --yes
 
-ENTRYPOINT ["opam", "config", "exec", "--"]
+#ENTRYPOINT ["opam", "config", "exec", "--"]
