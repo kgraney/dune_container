@@ -1,12 +1,14 @@
 #FROM ocaml/opam:alpine-ocaml-5.3
-FROM alpine
+FROM ubuntu:latest
 
 #USER opam
 #WORKDIR /home/opam
 
-RUN apk add opam
+RUN apt update
+RUN apt install -y opam
 RUN opam init --disable-sandboxing --bare -y
 
-RUN opam install dune --yes
+RUN opam switch create default 5.3.0
+RUN opam exec -- opam install -y dune
 
 #ENTRYPOINT ["opam", "config", "exec", "--"]
