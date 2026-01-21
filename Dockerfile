@@ -1,7 +1,7 @@
 FROM debian:stable-slim
 
 RUN apt update -y
-RUN apt install -y build-essential git bash
+RUN apt install -y build-essential git bash curl
 
 # for TSAN
 RUN apt install -y libunwind-dev pkgconf libtsan2
