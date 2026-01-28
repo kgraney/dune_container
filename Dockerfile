@@ -15,4 +15,9 @@ RUN opam init --auto-setup --disable-sandboxing --bare -y \
   && opam exec -- opam install -y dune \
   && opam exec -- opam install -y core.v0.17.1 async.v0.17.0 sexp.v0.17.0 nice_parser.1.0.0 menhir.20250912 ocamlformat.0.28.1 bisect_ppx.2.8.3
 
+RUN apt install -y golang
+RUN go install github.com/bazelbuild/buildtools/buildifier@latest
+
+ENV PATH="/root/go/bin:$PATH"
+
 #ENTRYPOINT ["opam", "config", "exec", "--"]
