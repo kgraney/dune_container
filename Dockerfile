@@ -6,6 +6,9 @@ RUN apt install -y build-essential git bash curl
 # for TSAN
 RUN apt install -y libunwind-dev pkgconf libtsan2
 
+# for Chromium
+RUN apt install -y lsb-release
+
 RUN apt install -y opam
 RUN opam init --auto-setup --disable-sandboxing --bare -y \
   && opam switch create default 5.3.0 \
