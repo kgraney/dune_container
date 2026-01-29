@@ -23,3 +23,7 @@ ENV OCAML_TOPLEVEL_PATH='/github/home/_opam/lib/toplevel'
 ENV MANPATH=':/github/home/_opam/man'
 ENV PATH='/github/home/_opam/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
 
+
+# Required for some tests
+RUN apk add python3
+
