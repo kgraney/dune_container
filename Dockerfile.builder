@@ -6,6 +6,9 @@ RUN apk add git
 RUN apk add linux-headers
 RUN apk add bash
 
+# Needed for `--posix` flag on tar, required by actions/cache
+RUN apk add --no-cache tar
+
 WORKDIR /github/home
 RUN opam init --auto-setup --disable-sandboxing --bare -y
 RUN opam switch create ./ 5.3.0
