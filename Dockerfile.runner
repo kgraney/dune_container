@@ -15,7 +15,6 @@ ENV PATH="/workdir/depot_tools:/go/bin:$PATH"
 WORKDIR /workdir/chromium
 RUN gclient metrics --opt-out
 RUN fetch --nohooks --no-history chromium
-RUN ./src/build/install-build-deps.sh
 
 FROM debian:stable-slim
 
@@ -34,8 +33,8 @@ RUN go install github.com/bazelbuild/buildtools/buildifier@latest
 ENV PATH="/workdir/depot_tools:/go/bin:$PATH"
 
 WORKDIR /workdir
-RUN gclient metrics --opt-out
 COPY --from=fetcher /workdir/depot_tools ./depot_tools
 COPY --from=fetcher /workdir/chromium/src/build ./build
 
+RUN gclient metrics --opt-out
 RUN ./build/install-build-deps.sh
