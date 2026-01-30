@@ -1,0 +1,19 @@
+FROM debian:stable-slim
+
+RUN apt update -y
+RUN apt install -y git
+RUN apt install -y bash
+RUN apt install -y golang
+RUN apt install -y curl
+
+# needed for Chromium tools
+RUN apt install -y lsb-release
+RUN apt install -y python3
+
+RUN go version
+RUN go install github.com/bazelbuild/buildtools/buildifier@latest
+
+WORKDIR /workdir
+RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
+
+ENV PATH="/workdir/depot_tools:/go/bin:$PATH"
