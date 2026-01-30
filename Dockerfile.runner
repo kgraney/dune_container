@@ -14,7 +14,7 @@ RUN go install github.com/bazelbuild/buildtools/buildifier@latest
 
 WORKDIR /workdir
 RUN git clone https://chromium.googlesource.com/chromium/tools/depot_tools.git
-ENV PATH="/workdir/depot_tools:/go/bin:$PATH"
+ENV PATH="/workdir/depot_tools:/root/go/bin:$PATH"
 RUN gclient metrics --opt-out
 
 WORKDIR /workdir/build
