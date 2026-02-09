@@ -24,4 +24,7 @@ RUN git sparse-checkout set --no-cone /build
 RUN git checkout
 RUN ./build/install-build-deps.sh
 
+# for compressing Chromium snapshots
+RUN apt install -y lz4
+
 WORKDIR /workdir
