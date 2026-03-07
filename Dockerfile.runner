@@ -30,7 +30,6 @@ RUN apt install -y lz4
 # bazelisk
 RUN curl -L https://github.com/bazelbuild/bazelisk/releases/latest/download/bazelisk-linux-amd64 -o /usr/local/bin/bazel
 RUN chmod +x /usr/local/bin/bazel
-RUN rm /workdir/depot_tools/bazel
 RUN bazel
 
 WORKDIR /workdir
